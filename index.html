@@ -11,7 +11,7 @@
       #hero{
         background: url(./images/ali-hero.jpg);
         background-size: cover;
-        height: 95vh;
+        height: 90vh;
      }
      #life-story{
          width: 100%;
@@ -23,21 +23,22 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-info navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background:#2c3e50">
         <a class="navbar-brand" href="">Ali</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dataToggle">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse " id="dataToggle">
-            <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse justify-content-end " id="dataToggle">
+            <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Home <span class="sr-only">Current</span></a>
+                    <a class="nav-link" href="#hero">Home <span class="sr-only">Current</span></a>
                 </li>
                 <li class="nav-item">
-                        <a class="nav-link" href="">Life Story<span class="sr-only">Current</span></a>
+                        <a class="nav-link" href="#life-story">Life Story</a>
                 </li>
+                
                 <li class="nav-item">
-                        <a class="nav-link" href="">Boxing Career<span class="sr-only">Current</span></a>
+                        <a class="nav-link" href="#boxing-career">Boxing Career</a>
                 </li>
             </ul>
         </div>      
@@ -56,21 +57,21 @@
     </div>
 
     <div id="life-story">
-        <div class="container">
+        <div class="container p-3">
             <div class="row">
                 <div class="col-md-8 mx-auto">
                     <p class="lead text-justify">
                             Muhammad Ali (/ɑːˈliː/;[8] born Cassius Marcellus Clay Jr. January 17, 1942 – June 3, 2016) was an American professional boxer and activist. He is widely regarded as one of the most significant and celebrated sports figures of the 20th century. From early in his career, Ali was known as an inspiring, controversial, and polarizing figure both inside and outside the ring.                            
                     </p>
                     <p class="lead text-justify">
-                                                        
+                            Clay made his amateur boxing debut in 1954 against local amateur boxer Ronnie O'Keefe.He won by split decision. Read more <a href="https://en.wikipedia.org/wiki/Muhammad_Ali">here</a>                                    
                     </p>
                 </div>          
             </div>
         </div>
     </div>
 
-    <div id="boxing-career" class="bg-secondary text-white pt-5">
+    <div id="boxing-career" class="text-white pt-5" style="background:#2980b9">
         <div class="container">
             <h2 class="h1 text-center p-3">Boxing Career</h2>
             <div class="row">
@@ -106,9 +107,9 @@
                   </table>
         </div>
     </div>
-    <footer class="bg-info">
+    <footer id="footer">
         <div class="container">
-            <div class="text-white text-center p-4 font-weight-bold">
+            <div class="text-center p-4 font-weight-bold">
                     &copy; All Rights Reserved 2017
             </div>    
         </div>
