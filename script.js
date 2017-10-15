@@ -1,7 +1,5 @@
-let board  		    = document.querySelector(".board");
-let spaces 		    = document.querySelectorAll(".board div");
+let cells 		    = document.querySelectorAll(".board div");
 let displayWon      = document.querySelector(".playerInfo");
-spaces				= Array.from(spaces);
 let humanPlayer     = "O";
 let machinePlayer   = "X"; 
 let winCombinations = [
@@ -14,66 +12,75 @@ let winCombinations = [
 	[0,4,8],
 	[2,4,6]
 ]
+cells = Array.from(cells);
 
-board.addEventListener("click",eventPlay,false);
+cells.forEach((value) => {
+	value.addEventListener("click",playerPlay,false);
+})
 
-function eventPlay(e){
-	for(let i = 0; i < spaces.length; i++){
-		if(e.target.className === i.toString()){
-			if(!spaces[i].textContent.trim()){
-			 playerPlay(spaces,i,humanPlayer)
-			 if(!checkTie(spaces)){
-			 	playerPlay(spaces,bestSpot(),machinePlayer)
-			 } 
-			}
-		}		
-	}	
-}
-
-
-function playerPlay(board,position,player){
-	board[position].textContent = player;
-	let playerWon =  checkPlayerWon(board,player);
-	if(playerWon){
-		gameOver(spaces,player);
+function playerPlay(e){
+	if(e.target.textContent === ""){
+		playerToplay(e.target,humanPlayer);
+		playerToplay(cells[emptyCells()[0]],machinePlayer)
 	}
 }
-
-function checkTie(board){
-	return emptySquares().length === 0
+function playerToplay(cell,player){
+	cell.textContent = player;
+	let game = gameWon(player);
+	if(game){
+		removelistener();
+	}
+	if(checkTie()){
+		console.log("game tied")
+	}
+}
+function removelistener(){
+	cells.forEach((value) => {
+		value.removeEventListener("click",playerPlay,false);
+	})	
 }
 
-function bestSpot(){
-	emptySquares()[0].className
-	// console.log()
-}
-
-function emptySquares(){
-	let emptySpaces =  spaces.filter((elem) => {
-		return elem.textContent.trim() === ""
-	})
-	return emptySpaces;
-}
-
-function checkPlayerWon(board,player){
-	let playerWon = null;
-	let playerSpots = board.reduce((acc,elem,index) => {
-		if(elem.textContent == player){
-			return acc.concat(index)
-		}else{
-			return acc;
+function gameWon(player){
+	let cellsPlayed = cells.reduce((acc,val) => {
+		if(val.textContent === player){
+			return acc.concat(+val.className);
 		}
+		return acc;
 	},[])
-	for(let [index,arr] of winCombinations.entries()){ 
-		if(arr.every((val) => playerSpots.includes(val))){
-			playerWon = {"index":index,"player":player}
+	for([index,array] of winCombinations.entries()){
+		if(array.every((val) => cellsPlayed.includes(val))){
+			displayPlayerWon(player);
+			return {index:index};
 			break;
 		}
 	}
-	return playerWon;
 }
 
-function gameOver(board,player){
+function emptyCells(){
+	let cellsEmpty = cells.reduce((acc,val) => {
+		if(val.textContent === ""){
+			return acc.concat(+val.className);
+		}
+		return acc;
+	},[])
+	return cellsEmpty;
+}
+
+function cellsPlayed(){
+	let cellsPlayed = cells.reduce((acc,val) => {
+		if(val.textContent !== ""){
+			return acc.concat(+val.className);
+		}
+		return acc;
+	},[])
+	return cellsPlayed;
+}
+
+function checkTie(){
+	return cellsPlayed().length === 0 
+}
+
+function displayPlayerWon(player){
 	displayWon.style.display = "block";
-	displayWon.textContent = player + " Won";
+	displayWon.innerHTML = player + " Won";
 }
