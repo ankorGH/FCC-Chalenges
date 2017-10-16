@@ -3,20 +3,32 @@
 <head>
 	<title>Pomodoro Clock</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<style>
+		body{
+			font-size:60px;
+		}
+	</style>
 </head>
 <body>
-	<div class="time-break">
-		<button class="time-changer-sub">-</button>
-		<span class="time"></span>
-		<button class="time-changer-add">+</button>	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+					<div class="time-break">
+						<button class="time-changer-sub">-</button>
+						<span class="time"></span>
+						<button class="time-changer-add">+</button>	
+					</div>
+			</div>
+			<div class="col-md-6">
+				<div class="time-work">
+					<button class="time-changer-sub">-</button>
+					<span class="time"></span>
+					<button class="time-changer-add">+</button>	
+			</div>	
+			</div>
+		</div>
 	</div>
-	<br>
-	<div class="time-work">
-		<button class="time-changer-sub">-</button>
-		<span class="time"></span>
-		<button class="time-changer-add">+</button>	
-	</div>
-
+	
 	<br>
 	<div class="session">
 		<p></p>
