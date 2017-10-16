@@ -1,106 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <style>
-      #hero
-      {
-        background: url(./images/ali-hero.jpg);
-        background-size: cover;
-        height: 90vh;
-     }
-     #life-story
-     {
-         width: 100%;
-     }
-     table.table
-     {
-         margin-bottom: 0px;
-     }
+      
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background:#2c3e50">
-        <a class="navbar-brand" href="">Ali</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#dataToggle">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end " id="dataToggle">
-            <ul class="navbar-nav ">
-                <li class="nav-item">
-                    <a class="nav-link" href="#hero">Home <span class="sr-only">Current</span></a>
-                </li>
-                <li class="nav-item">
-                        <a class="nav-link" href="#life-story">Life Story</a>
-                </li>
-                
-                <li class="nav-item">
-                        <a class="nav-link" href="#boxing-career">Boxing Career</a>
-                </li>
-            </ul>
-        </div>      
-    </nav>
 
-    <div class="jumbotron text-white" id="hero">
-       <br><br>
-        <div class="w-50 mt-5">
-            <h1 class="display-3 font-weight-bold">
-                Muhammed Ali
-            </h1>
-            <p class="lead font-italic">
-                1942 &mdash; 2017   
-            </p>
-        </div>
-    </div>
-
-    <div id="life-story">
-        <div class="container p-5">
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <p class="lead text-justify">
-                            Muhammad Ali (/ɑːˈliː/;[8] born Cassius Marcellus Clay Jr. January 17, 1942 – June 3, 2016) was an American professional boxer and activist. He is widely regarded as one of the most significant and celebrated sports figures of the 20th century. From early in his career, Ali was known as an inspiring, controversial, and polarizing figure both inside and outside the ring.                            
-                    </p>
-                    <p class="lead text-justify">
-                            Clay made his amateur boxing debut in 1954 against local amateur boxer Ronnie O'Keefe.He won by split decision. Read more <a href="https://en.wikipedia.org/wiki/Muhammad_Ali">here</a>                                    
-                    </p>
-                </div>          
-            </div>
-        </div>
-    </div>
-
-    <div id="boxing-career" class="text-white p-5" style="background:#2980b9">
-        <div class="container">
-            <h2 class="h1 text-center p-1 font-weight-bold">Boxing Career</h2>
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                        <p class="lead text-justify">
-                                Ali had a highly unorthodox boxing style for a heavyweight, epitomized by his catchphrase "float like a butterfly, sting like a bee". Never an overpowering puncher, Ali relied early in his career on his superior hand speed, superb reflexes and constant movement, dancing and circling opponents for most of the fight, holding his hands low and lashing out with a quick, cutting left jab that he threw from unpredictable angles.
-                        </p>
-                        <p class="lead text-justify">
-                                Ali is regarded as one of the leading heavyweight boxers of the 20th century. He remains the only three-time lineal heavyweight champion, having won the title in 1964, 1974, and 1978. 
-                        </p>
-                </div>
-            </div>
-              
-        </div>
-    </div>
-    <footer id="footer" style="background:#2c3e50">
-        <div class="container">
-            <div class="text-center text-white p-4 font-weight-bold">
-                    &copy; All Rights Reserved 2017
-            </div>    
-        </div>
-    </footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	<div id="app">
+		<input type="text" v-model:value="numberOfProcesses" v-on:keyup.enter="displayProcesses = !displayProcesses" v-if="displayProcesses" placeholder="Enter number of Processes">
+		<div class="processes" v-else>
+			<div v-for="num in +(numberOfProcesses)">
+					<process :num="num"></process>
+			</div>
+			<button type="submit" @click="calcFCFS">Calc FCFS</button>
+		</div>
+		
+		
+	</div>
+	
+	<script src="./vue.js"></script>
+	<script src="./script.js"></script>
   </body>
 </html>
