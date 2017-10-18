@@ -6,35 +6,59 @@
 	<style>
 		body{
 			font-size:60px;
+			background: #34495e;
+			color: #fff;
+		}
+		#timeSwitch{
+			margin-top:100px;
+		}
+		.session{
+			width:350px;
+			border:2px solid #17a2b8;
+			padding: 25px;
+			border-radius: 8px;
+			margin-bottom: 10px;
+		}
+		.session:hover{
+			background: #34495e;
+		}
+		button.reset,button.start{
+			font-size: 26px;
 		}
 	</style>
 </head>
 <body>
-	<div class="container">
+	<div class="container" id="timeSwitch">
 		<div class="row">
-			<div class="col-md-6">
+			<!-- create an offset later -->
+			<div class="col-md-1"></div>
+			<div class="col-md-5">
 					<div class="time-break">
-						<button class="time-changer-sub">-</button>
+						<button class="btn btn-outline-info time-changer-sub">-</button>
 						<span class="time"></span>
-						<button class="time-changer-add">+</button>	
+						<button class="btn btn-outline-info time-changer-add">+</button>	
 					</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<div class="time-work">
-					<button class="time-changer-sub">-</button>
+					<button class="btn btn-outline-info time-changer-sub">-</button>
 					<span class="time"></span>
-					<button class="time-changer-add">+</button>	
+					<button class="btn btn-outline-info time-changer-add">+</button>	
 			</div>	
 			</div>
 		</div>
 	</div>
 	
 	<br>
-	<div class="session">
-		<p></p>
-		<button class="start">Start</button>
-		<button class="reset">Reset</button>
+	<div id="listener" class="col-md-4 mx-auto">
+			<div class="session">
+					<p></p>
+			</div>
+
+				<button class="start btn btn-lg btn-outline-success">Start</button>
+				<button class="reset btn btn-lg btn-outline-danger">Reset</button>
 	</div>
+	
 
 	<audio>
 		<source src="sound.mp3" type="audio/mp3">
