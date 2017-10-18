@@ -1,86 +1,81 @@
-let cells 		    = document.querySelectorAll(".board div");
-let displayWon      = document.querySelector(".playerInfo");
-let humanPlayer     = "O";
-let machinePlayer   = "X"; 
-let winCombinations = [
-	[0,1,2],
-	[3,4,5],
-	[6,7,8],
-	[0,3,6],
-	[1,4,7],
-	[2,5,8],
-	[0,4,8],
-	[2,4,6]
-]
-cells = Array.from(cells);
+let el 		  = document.querySelector("#calc-body .calc-data-btn");
+let operation = document.querySelector("#calc-body .calc-operation-btn") 
+let calculate = document.querySelector("#calc-body .calc-operation-btn .equal");
+let display   = document.querySelector("#calc-body .display .data");
+let num		  = "0";
+let firstNum,secondNum,func;
 
-cells.forEach((value) => {
-	value.addEventListener("click",playerPlay,false);
+// initialize data 
+display.textContent = num;
+num 				= "";
+
+el.addEventListener("click",(e) => {
+	if(e.target.className === "data"){
+		num += e.target.innerText;
+		display.textContent = num;
+	}	
 })
 
-function playerPlay(e){
-	if(e.target.textContent === ""){
-		playerToplay(e.target,humanPlayer);
-		playerToplay(cells[emptyCells()[0]],machinePlayer)
+operation.addEventListener("click",(e) => {
+	if(e.target.className === "subtract"){
+		checkFirstNumber(sub);		
 	}
-}
-function playerToplay(cell,player){
-	cell.textContent = player;
-	let game = gameWon(player);
-	if(game){
-		removelistener();
+	else if(e.target.className === "addition"){
+		checkFirstNumber(add);
 	}
-	if(checkTie()){
-		console.log("game tied")
+	else if(e.target.className === "multi"){
+		checkFirstNumber(multiply);
 	}
-}
-function removelistener(){
-	cells.forEach((value) => {
-		value.removeEventListener("click",playerPlay,false);
-	})	
-}
-
-function gameWon(player){
-	let cellsPlayed = cells.reduce((acc,val) => {
-		if(val.textContent === player){
-			return acc.concat(+val.className);
+	else if(e.target.className === "divide"){
+		checkFirstNumber(divide);
+	}else if(e.target.className === "equal"){
+		if((firstNum && !secondNum) || secondNum){
+			secondNum = (+num)
+			num = func(firstNum,secondNum).toString();
+			display.textContent = num;
 		}
-		return acc;
-	},[])
-	for([index,array] of winCombinations.entries()){
-		if(array.every((val) => cellsPlayed.includes(val))){
-			displayPlayerWon(player);
-			return {index:index};
-			break;
+		
+	}
+	else if(e.target.className === "reset"){
+		display.textContent = "0";
+		num = "";
+	}
+	else if(e.target.className === "rem"){
+		if(num.length > 1){
+			num 	 	        = num.slice(0,num.length-1);
+			display.textContent = num;	
+		}else{
+			num 	            = "";
+			display.textContent = 0;
 		}
 	}
+})
+
+
+function add(a,b)
+{
+	return a + b;
 }
 
-function emptyCells(){
-	let cellsEmpty = cells.reduce((acc,val) => {
-		if(val.textContent === ""){
-			return acc.concat(+val.className);
+function sub(a,b)
+{
+	return a - b;
+}
+
+function multiply(a,b)
+{
+	return a * b;
+}
+
+function divide(a,b)
+{
+	return a / b;
+}
+
+function checkFirstNumber(operation){
+	if(!firstNum || firstNum){
+			firstNum = (+num);
+			num = "";
+			func = operation;
 		}
-		return acc;
-	},[])
-	return cellsEmpty;
-}
-
-function cellsPlayed(){
-	let cellsPlayed = cells.reduce((acc,val) => {
-		if(val.textContent !== ""){
-			return acc.concat(+val.className);
-		}
-		return acc;
-	},[])
-	return cellsPlayed;
-}
-
-function checkTie(){
-	return cellsPlayed().length === 0 
-}
-
-function displayPlayerWon(player){
-	displayWon.style.display = "block";
-	displayWon.innerHTML = player + " Won";
 }

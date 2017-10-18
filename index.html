@@ -1,56 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tic Tac Toe</title>
-	<style type="text/css">
-		.board{
-			width:1000px;
-			margin: 20px auto;
-			display: grid;
-			grid-template-columns: repeat(3,1fr);
-			grid-template-rows: repeat(3,200px);
-			grid-gap: 10px;
-			background: #777;
-		}
-		.board div{
-			font-size:100px;
-			padding: 30px;
-			background: #3bbced;
-			text-align: center;
-		}
-		.board div:nth-child(even){
-			background: #ccc;
-		}
-		.playerInfo{
-			background: burlywood;
-			width: 400px;
-			height: 80px;
-			position: absolute;
-			top:250px;
-			left:450px;
-			font-size: 60px;
-			color: #fff;
-			padding: 20px;
-			display: none;
-			text-align: center;	
-		}
-	</style>
+	<title>FCC Calculator</title>
 </head>
 <body>
-	<div class="board">
-		<div class="0"></div>
-		<div class="1"></div>
-		<div class="2"></div>
-		<div class="3"></div>
-		<div class="4"></div>
-		<div class="5"></div>
-		<div class="6"></div>
-		<div class="7"></div>
-		<div class="8"></div>
+	<div id="calc-body">
+		<div class="display">
+			<p class="data"></p>
+		</div>
+		<div class="calc-data-btn">
+			<button class="data">0</button>
+			<button class="data">1</button>
+			<button class="data">2</button>
+			<button class="data">3</button>
+			<button class="data">4</button>
+			<button class="data">5</button>
+			<button class="data">6</button>
+			<button class="data">7</button>
+			<button class="data">8</button>
+			<button class="data">9</button>
+				
+		</div>
+		<br>
+		<div class="calc-operation-btn">
+			<button class="subtract">-</button>
+			<button class="addition">+</button>
+			<button class="multi">*</button>
+			<button class="divide">/</button>
+			<button class="equal">=</button>
+			<button class="rem">Del</button>
+			<button class="reset">AC</button>
+		</div>
 	</div>
-	<div class="playerInfo">
-    
-    </div>
 	<script type="text/javascript" src="./script.js"></script>
 </body>
 </html>
