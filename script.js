@@ -2,7 +2,7 @@ let timeBreakSelector = document.querySelector(".time-break");
 let timeWorkSelector  = document.querySelector(".time-work");
 let displayBreak	  = timeBreakSelector.querySelector(".time");
 let displayWork		  = timeWorkSelector.querySelector(".time");
-let session			  = document.querySelector(".session");
+let session			  = document.querySelector("#listener");
 let audioPlayer		  = document.querySelector("audio")
 let sessionDisplay    = session.querySelector("p");
 let timeBreak,timeWork;
@@ -11,35 +11,35 @@ let hour,min,sec,hourBreak,minBreak,secBreak;
 initializePomomdoro();
 
 timeBreakSelector.addEventListener("click",(e) => {
-	if(e.target.className === "time-changer-sub"){
+	if(e.target.className === "btn btn-outline-info time-changer-sub"){
 		if(timeBreak > 0){
 			timeBreak -=60;
 			displayBreakTime();	
 		}		
 	}
 
-	if(e.target.className === "time-changer-add"){
+	if(e.target.className === "btn btn-outline-info time-changer-add"){
 		timeBreak += 60;
 		displayBreakTime();	
 	}
 })
 
 timeWorkSelector.addEventListener("click",(e) => {
-	if(e.target.className === "time-changer-sub"){
+	if(e.target.className === "btn btn-outline-info time-changer-sub"){
 		if(timeWork > 0){
 			timeWork -= 60;
 			displayWorkTime();
 		}
 	}
 
-	if(e.target.className === "time-changer-add"){
+	if(e.target.className === "btn btn-outline-info time-changer-add"){
 		timeWork += 60;
 		displayWorkTime();
 	}	
 })
 
 session.addEventListener("click",(e) => {
-	if(e.target.className === "start"){
+	if(e.target.className === "start btn btn-lg btn-outline-success"){
 		for(let i = timeWork; i > 0 ; i--){
 			setTimeout(() => {
 				timeWork--;
@@ -51,7 +51,7 @@ session.addEventListener("click",(e) => {
 		}
 	}
 
-	if(e.target.className === "reset"){
+	if(e.target.className === "reset btn btn-lg btn-outline-danger"){
 		initializePomomdoro();
 		window.location.reload();
 	}
