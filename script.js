@@ -1,6 +1,4 @@
 let el 		  = document.querySelector("#calc-body .calc-data-btn");
-let operation = document.querySelector("#calc-body .calc-operation-btn") 
-let calculate = document.querySelector("#calc-body .calc-operation-btn .equal");
 let display   = document.querySelector("#calc-body .display .data");
 let num		  = "0";
 let firstNum,secondNum,func;
@@ -13,10 +11,7 @@ el.addEventListener("click",(e) => {
 	if(e.target.className === "data"){
 		num += e.target.innerText;
 		display.textContent = num;
-	}	
-})
-
-operation.addEventListener("click",(e) => {
+	}
 	if(e.target.className === "subtract"){
 		checkFirstNumber(sub);		
 	}
@@ -48,8 +43,9 @@ operation.addEventListener("click",(e) => {
 			num 	            = "";
 			display.textContent = 0;
 		}
-	}
+	}	
 })
+
 
 
 function add(a,b)
