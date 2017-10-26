@@ -39,7 +39,7 @@ timeWorkSelector.addEventListener("click",(e) => {
 })
 
 session.addEventListener("click",(e) => {
-	if(e.target.className === "start btn btn-lg btn-outline-success"){
+	if(e.target.className === "start btn btn-lg btn-success"){
 		for(let i = timeWork; i > 0 ; i--){
 			setTimeout(() => {
 				timeWork--;
@@ -51,7 +51,7 @@ session.addEventListener("click",(e) => {
 		}
 	}
 
-	if(e.target.className === "reset btn btn-lg btn-outline-danger"){
+	if(e.target.className === "reset btn btn-lg btn-danger"){
 		initializePomomdoro();
 		window.location.reload();
 	}
